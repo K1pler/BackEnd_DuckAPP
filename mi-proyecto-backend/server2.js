@@ -16,12 +16,12 @@ const certificate = fs.readFileSync(path.join(__dirname, 'server.cert'), 'utf8')
 // Sirve los archivos estáticos de tu juego de Unity WebGL con Brotli si está disponible
 // Middleware para manejar la codificación Brotli
 app.get('*.*', (req, res, next) => {
-    if (req.url.endsWith('.br')) {
-      res.set('Content-Encoding', 'br');
-      res.set('Content-Type', req.url.endsWith('.js') ? 'application/javascript' : 'text/plain');
-    }
-    next();
-  });
+  if (req.url.endsWith('.br')) {
+    res.set('Content-Encoding', 'br');
+    res.set('Content-Type', req.url.endsWith('.js') ? 'application/javascript' : 'text/plain');
+  }
+  next();
+});
 
 app.use(express.static(unityGamePath));
 

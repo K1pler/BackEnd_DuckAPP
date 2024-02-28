@@ -1,6 +1,4 @@
 const admin = require('firebase-admin');
-
-// Reemplaza el path del require con la ruta a tu archivo de credenciales descargado
 const serviceAccount = require('./duck-team-firebase-adminsdk-e0smk-4ac453f97c.json');
 
 admin.initializeApp({
@@ -9,6 +7,8 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-module.exports = db;
+// Exporta ambos objetos
+module.exports = { admin, db };
 
-module.exports = { admin, db }; // Exporta ambos objetos
+
+  
